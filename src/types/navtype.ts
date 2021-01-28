@@ -1,3 +1,7 @@
+export type item{
+  node: navItem | contentItem
+}
+
 export interface navItem {
   element: navElement
   system: System
