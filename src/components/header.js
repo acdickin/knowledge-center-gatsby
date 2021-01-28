@@ -1,10 +1,14 @@
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import JumpTo from "./layouts/content-header"
+
 
 const Header = () => {
-  //TODO add image, connect algolia search, possibly make layout for algolia search 
+  // TODO 
+  // add image
+  // connect algolia search,
+  // possibly make layout for algolia search 
+  // possibly use link
   return (
     <div id="defaultheader">
       <div id="logocontainer" >

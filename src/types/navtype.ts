@@ -1,4 +1,4 @@
-export type item{
+export type item {
   node: navItem | contentItem
 }
 

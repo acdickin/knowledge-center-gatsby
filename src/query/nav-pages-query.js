@@ -1,4 +1,4 @@
-const navPagesQuery = `
+export let navPagesQuery = `
   {
     allKontentItemNavigationItem (filter: {system: {codename: {eq: "root"}}}){
       nodes {
@@ -182,4 +182,3 @@ const navPagesQuery = `
     }
   }
 `
-export default navPagesQuery

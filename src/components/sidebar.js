@@ -1,7 +1,7 @@
 import React from "react"
 
-const Navigation = (props) => {
+const Sidebar = (props) => {
 
 }
 
-export default Navigation
+export default Sidebar

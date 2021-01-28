@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
 
-const { navPagesQuery } = require("./src/query/nav-pages-query");
+
 
 // You can delete this file if you're not using it
 exports.createPages = async ({ graphql, actions }) => {
@@ -12,17 +12,6 @@ exports.createPages = async ({ graphql, actions }) => {
   // Query data from Kentico
   const result = await graphql(navPagesQuery)
 
-  const FOLDER_NAME = [
-    "categorylist",
-    "subcategoryfolder",
-    "pagesfolder",
-  ];
-  const LEAF_NAME = [
-    "categoryname",
-    "subcategories",
-    "page",
-    "level3"
-  ];
 
   // const PageBuilder = (nodes, level) => {
   //   nodes.forEach(node=>{
@@ -34,7 +23,7 @@ exports.createPages = async ({ graphql, actions }) => {
   //         path: node.fields.slug,
   //         component: path.resolve(`src/templates/article.js`),
   //         context: {
-  //           slug: node.fields.slug,
+  //          body, post_tags,product_description,published,title,url,why_the_product_is_useful
   //         },
   //       })
   //     })
@@ -50,7 +39,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     //else
     //PageBuilder(node.elements.subitems.value,1)
-    if (node.system.type === product_overview) {
+    if (node.system.type === "product_overview") {
       createPage({
         path: node.fields.slug,
         component: path.resolve(`src/components/layout.js`),
@@ -61,3 +50,189 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   })
 }
+
+
+let navPagesQuery = `
+  {
+    allKontentItemNavigationItem (filter: {system: {codename: {eq: "root"}}}){
+      nodes {
+        system {
+          codename
+          type
+        }
+        elements {
+          subitems {
+            value {
+              ... on kontent_item_navigation_item {
+                system {
+                  codename
+                  type
+                }
+                elements {
+                  subitems {
+                    value {
+                      ... on kontent_item_navigation_item {
+                        system {
+                          codename
+                          type
+                        }
+                        elements {
+                          subitems {
+                            value {
+                              ... on kontent_item_navigation_item {
+                                system {
+                                  codename
+                                  type
+                                }
+                                elements {
+                                  subitems {
+                                    value {
+                                      ... on kontent_item_navigation_item {
+                                        system {
+                                          codename
+                                          type
+                                        }
+                                      }
+                                      ... on kontent_item_product_overview {
+                                        system {
+                                          codename
+                                          type
+                                        }
+                                        elements {
+                                          body {
+                                            value
+                                          }
+                                          post_tags {
+                                            value {
+                                              name
+                                            }
+                                          }
+                                          product_description {
+                                            value
+                                          }
+                                          published {
+                                            value(fromNow: true)
+                                          }
+                                          title {
+                                            value
+                                          }
+                                          url {
+                                            value
+                                          }
+                                          why_the_product_is_useful {
+                                            value
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              ... on kontent_item_product_overview {
+                                system {
+                                  codename
+                                  type
+                                }
+                                elements {
+                                  body {
+                                    value
+                                  }
+                                  post_tags {
+                                    value {
+                                      name
+                                    }
+                                  }
+                                  product_description {
+                                    value
+                                  }
+                                  published {
+                                    value(fromNow: true)
+                                  }
+                                  title {
+                                    value
+                                  }
+                                  url {
+                                    value
+                                  }
+                                  why_the_product_is_useful {
+                                    value
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                      ... on kontent_item_product_overview {
+                        system {
+                          codename
+                          type
+                        }
+                        elements {
+                          body {
+                            value
+                          }
+                          post_tags {
+                            value {
+                              name
+                            }
+                          }
+                          product_description {
+                            value
+                          }
+                          published {
+                            value(fromNow: true)
+                          }
+                          title {
+                            value
+                          }
+                          url {
+                            value
+                          }
+                          why_the_product_is_useful {
+                            value
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              ... on kontent_item_product_overview {
+                system {
+                  codename
+                  type
+                }
+                elements {
+                  body {
+                    value
+                  }
+                  post_tags {
+                    value {
+                      name
+                    }
+                  }
+                  product_description {
+                    value
+                  }
+                  published {
+                    value(fromNow: true)
+                  }
+                  title {
+                    value
+                  }
+                  url {
+                    value
+                  }
+                  why_the_product_is_useful {
+                    value
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
