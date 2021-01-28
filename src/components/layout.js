@@ -10,33 +10,21 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Sidebar from "./sidebar"
+import Page from "./page"
+import JumpTo from "./layouts/jump-to"
 import "./layout.css"
 
 const Layout = (props) => {
 
 
   return (
-    <>
-      <Header siteTitle={`Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <Page />
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <div id="defaultwrapper">
+      <Header />
+      <Sidebar />
+      <Page />
+      <Footer />
+    </div>
   )
 }
 

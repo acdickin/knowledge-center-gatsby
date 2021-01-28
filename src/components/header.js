@@ -1,42 +1,25 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import JumpTo from "./layouts/content-header"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+const Header = () => {
+  //TODO add image, connect algolia search, possibly make layout for algolia search 
+  return (
+    <div id="defaultheader">
+      <div id="logocontainer" >
+        <a href="/index.html"><img src="img/lp-logo.svg" /></a>
+      </div >
+      <input type="text" id="aa-search-input" class="aa-input-search" placeholder="Search our knowledge center..." name="search" autocomplete="on" />
+      <div id="homebuttons">
+        <span id="login" class="homebutton">
+          <a target="_blank" href="https://liveengage.liveperson.net">LivePerson login</a>
+        </span>
+      </div>
     </div>
-  </header>
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+  )
 }
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
+
 
 export default Header
