@@ -1,12 +1,11 @@
 export interface navItem {
-  element: navElement;
-  system: System;
-
+  element: navElement
+  system: System
 }
 
 export interface contentItem {
   element: contentElement
-  system: System;
+  system: System
 }
 
 export interface contentElement {
@@ -22,11 +21,9 @@ export interface contentElement {
 }
 export interface navElement {
   subitems: {
-    value: [contentElement];
+    value: Array<contentElement>
   }
 }
-
-
 export interface System {
   codename: string;
   type: string;
